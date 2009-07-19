@@ -4,21 +4,8 @@
     "http://java.sun.com/dtd/web-app_2_3.dtd">
 
 <web-app>
-
   <!-- Default page to serve -->
   <welcome-file-list>
     <welcome-file>MQ.html</welcome-file>
   </welcome-file-list>
-  
-  <!-- Servlets -->
-  <servlet>
-    <servlet-name>greetServlet</servlet-name>
-    <servlet-class>mq.server.GreetingServiceImpl</servlet-class>
-  </servlet>
-  
-  <servlet-mapping>
-    <servlet-name>greetServlet</servlet-name>
-    <url-pattern>/mq/greet</url-pattern>
-  </servlet-mapping>
-
 </web-app>
