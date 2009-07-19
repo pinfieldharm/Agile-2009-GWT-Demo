@@ -32,3 +32,10 @@ h1 {
 #closeButton {
   margin: 15px 6px 6px;
 }
+
+.moviePanel {
+	background-color: silver;
+	padding: 10px;
+	width: 400px;
+	margin: 2px;
+}

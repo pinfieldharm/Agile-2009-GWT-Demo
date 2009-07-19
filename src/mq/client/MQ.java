@@ -22,9 +22,6 @@ public class MQ implements EntryPoint {
 		final VerticalPanel mainPanel = new VerticalPanel();
 		RootPanel.get().add(mainPanel);
 		
-		final VerticalPanel queuePanel = new VerticalPanel();
-		mainPanel.add(queuePanel);
-		
 		final HorizontalPanel inputPanel = new HorizontalPanel();
 		mainPanel.add(inputPanel);
 		
@@ -34,11 +31,15 @@ public class MQ implements EntryPoint {
 		final Button addButton = new Button("Add");
 		inputPanel.add(addButton);
 		
+		final VerticalPanel queuePanel = new VerticalPanel();
+		mainPanel.add(queuePanel);
+		
 		addButton.addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event) {
 				String title = addBox.getText();
 				if (title.length() > 0) {
-					new MoviePanel(title, queuePanel);
+					queuePanel.insert(new MoviePanel(title, queuePanel), 0);
+					addBox.setText("");
 				}
 			}});
 	}

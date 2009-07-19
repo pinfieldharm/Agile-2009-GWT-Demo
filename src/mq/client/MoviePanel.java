@@ -5,9 +5,9 @@ package mq.client;
 
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HorizontalPanel;
+import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
 public final class MoviePanel extends HorizontalPanel {
@@ -15,13 +15,15 @@ public final class MoviePanel extends HorizontalPanel {
 
 	public MoviePanel(String title, VerticalPanel queuePanel) {
 		this.queuePanel = queuePanel;
+		this.setStylePrimaryName("moviepanel");
 		this.add(new HTML(title));
 		addRemoveButton();
 		addTopButton();
 	}
 
 	private void addTopButton() {
-		Button topButton = new Button("Move to top");
+		
+		Image topButton = new Image("icons/arrow_up.png");
 		this.add(topButton);
 		topButton.addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event) {
@@ -32,13 +34,13 @@ public final class MoviePanel extends HorizontalPanel {
 	}
 
 	private void addRemoveButton() {
-		Button removeButton = new Button("Remove");
+		
+		Image removeButton = new Image("icons/cross.png");
 		this.add(removeButton);
 		removeButton.addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event) {
 				queuePanel.remove(MoviePanel.this);
 			}
 		});
-		queuePanel.add(this);
 	}
 }
