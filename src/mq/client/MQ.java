@@ -4,7 +4,9 @@ import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HorizontalPanel;
+import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
@@ -20,9 +22,13 @@ public class MQ implements EntryPoint {
 	public void onModuleLoad() {
 
 		final VerticalPanel mainPanel = new VerticalPanel();
+		mainPanel.setStylePrimaryName("mainPanel");
 		RootPanel.get().add(mainPanel);
 		
+		mainPanel.add(new HTML("<h1>Book Stack</h1>"));
+		
 		final HorizontalPanel inputPanel = new HorizontalPanel();
+		inputPanel.setStylePrimaryName("inputPanel");
 		mainPanel.add(inputPanel);
 		
 		final TextBox addBox = new TextBox();
@@ -32,6 +38,7 @@ public class MQ implements EntryPoint {
 		inputPanel.add(addButton);
 		
 		final VerticalPanel queuePanel = new VerticalPanel();
+		queuePanel.setStylePrimaryName("queuePanel");
 		mainPanel.add(queuePanel);
 		
 		addButton.addClickHandler(new ClickHandler() {
@@ -42,5 +49,9 @@ public class MQ implements EntryPoint {
 					addBox.setText("");
 				}
 			}});
+		
+		queuePanel.add(new MoviePanel("Sample video", queuePanel));
+		queuePanel.add(new MoviePanel("Another", queuePanel));
+		
 	}
 }
