@@ -1,6 +1,5 @@
 package mq.client;
 
-import com.google.gwt.event.shared.HandlerManager;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HorizontalPanel;
@@ -15,7 +14,7 @@ public class View {
 	private SuggestBox addBox;
 	private VerticalPanel stackPanel;
 
-	public View(final HandlerManager eventBus) {
+	public View() {
 
 		final VerticalPanel mainPanel = new VerticalPanel();
 		mainPanel.setStylePrimaryName("mainPanel");
@@ -43,6 +42,8 @@ public class View {
 		stackPanel.setStylePrimaryName("stackPanel");
 		mainPanel.add(stackPanel);
 
+		
+		
 	}
 
 	public Button getAddButton() {

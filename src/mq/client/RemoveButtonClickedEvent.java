@@ -1,30 +1,34 @@
 package mq.client;
 
+import com.google.gwt.event.shared.EventHandler;
 import com.google.gwt.event.shared.GwtEvent;
 
-public class RemoveButtonClickedEvent extends GwtEvent<RemoveButtonClickedEventHandler> {
-	public static final Type<RemoveButtonClickedEventHandler> TYPE = new Type<RemoveButtonClickedEventHandler>();
+public class RemoveButtonClickedEvent extends GwtEvent<RemoveButtonClickedEvent.Handler> {
+	public static final Type<Handler> TYPE = new Type<Handler>();
 
 	private BookPanel panel;
 	
-	public RemoveButtonClickedEvent(BookPanel bookPanel) {
-		panel = bookPanel;
+	public RemoveButtonClickedEvent(BookPanel panel) {
+		this.panel = panel;
 	}
-
 
 	public BookPanel getPanel() {
 		return panel;
 	}
 	
-	
 	@Override
-	protected void dispatch(RemoveButtonClickedEventHandler handler) {
+	protected void dispatch(Handler handler) {
 		handler.onRemoveButtonClicked(this);
 	}
 
 	@Override
-	public com.google.gwt.event.shared.GwtEvent.Type<RemoveButtonClickedEventHandler> getAssociatedType() {
+	public com.google.gwt.event.shared.GwtEvent.Type<Handler> getAssociatedType() {
 		return TYPE;
 	}
 
+	public interface Handler extends EventHandler {
+		void onRemoveButtonClicked(RemoveButtonClickedEvent removeButtonClickedEvent);
+	}
+
+	
 }

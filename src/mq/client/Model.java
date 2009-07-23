@@ -16,7 +16,7 @@ public class Model {
 	
 	public void addTitle(String title) {
 		titles.add(0, title);
-		eventBus.fireEvent(new AddEvent());
+		eventBus.fireEvent(new ModelChangeEvent());
 	}
 	
 	public ArrayList<String> getTitles() {
@@ -25,7 +25,7 @@ public class Model {
 
 	public void removeTitle(String text) {
 		titles.remove(text);
-		eventBus.fireEvent(new RemoveEvent());
+		eventBus.fireEvent(new ModelChangeEvent());
 	}
 
 }

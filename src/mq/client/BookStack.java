@@ -12,9 +12,8 @@ public class BookStack implements EntryPoint {
 	 * This is the entry point method.
 	 */
 	public void onModuleLoad() {
-		
 		HandlerManager eventBus = new HandlerManager(null);
-		View view = new View(eventBus);
+		View view = new View();
 		Model model = new Model(eventBus);
 		new BookStackPresenter(eventBus, view, model);
 		model.addTitle("This is a test");

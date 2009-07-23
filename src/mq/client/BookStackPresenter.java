@@ -5,7 +5,7 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.shared.HandlerManager;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
-public class BookStackPresenter {
+public class BookStackPresenter implements AddButtonClickedEvent.Handler, RemoveButtonClickedEvent.Handler, ModelChangeEvent.Handler {
 
 	private final HandlerManager eventBus;
 	private final View view;
@@ -17,45 +17,20 @@ public class BookStackPresenter {
 		this.eventBus = eventBus;
 		this.view = view;
 		this.model = model;
+
+		/* Bind low-level UI events */
 		view.getAddButton().addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event) {
 				eventBus.fireEvent(new AddButtonClickedEvent());
 			}
 		});
 
-		eventBus.addHandler(AddButtonClickedEvent.TYPE,
-				new AddButtonClickedEventHandler() {
-					public void onAddButtonClicked(
-							AddButtonClickedEvent addButtonClickedEvent) {
-						String title = view.getAddBox().getText().trim();
-						if (title.length() > 0) {
-							model.addTitle(title);
-						}
-						view.getAddBox().setText("");
-					}
-				});
+		/* Bind to higher-level UI events */
+		eventBus.addHandler(AddButtonClickedEvent.TYPE, this);
+		eventBus.addHandler(RemoveButtonClickedEvent.TYPE, this);
 
-		eventBus.addHandler(RemoveButtonClickedEvent.TYPE,
-				new RemoveButtonClickedEventHandler() {
-					public void onRemoveButtonClicked(
-							RemoveButtonClickedEvent removeButtonClickedEvent) {
-						model.removeTitle(removeButtonClickedEvent.getPanel().getLabel().getText());
-					}
-				});
-
-		eventBus.addHandler(AddEvent.TYPE, new AddEventHandler() {
-			public void onAdd(AddEvent addEvent) {
-				redrawStack();
-			}
-		});
-
-		eventBus.addHandler(RemoveEvent.TYPE, new RemoveEventHandler() {
-
-			public void onRemove(RemoveEvent removeEvent) {
-				redrawStack();
-			}
-		});
-
+		/* Bind to model events */
+		eventBus.addHandler(ModelChangeEvent.TYPE, this);
 	}
 
 	/*
@@ -66,7 +41,19 @@ public class BookStackPresenter {
 	 * queuePanel.insert(BookPanel.this, 0); } }); }
 	 */
 
-	private void redrawStack() {
+	public void onAddButtonClicked(AddButtonClickedEvent addButtonClickedEvent) {
+		String title = view.getAddBox().getText().trim();
+		if (title.length() > 0) {
+			model.addTitle(title);
+		}
+		view.getAddBox().setText("");
+	}
+
+	public void onRemoveButtonClicked(RemoveButtonClickedEvent removeButtonClickedEvent) {
+		model.removeTitle(removeButtonClickedEvent.getPanel().getLabel().getText());
+	}
+
+	public void onModelChange(ModelChangeEvent addEvent) {
 		VerticalPanel stackPanel = view.getStackPanel();
 		stackPanel.clear();
 		for (String title : model.getTitles()) {
