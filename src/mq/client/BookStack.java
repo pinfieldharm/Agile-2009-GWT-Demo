@@ -14,7 +14,7 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
  */
-public class MQ implements EntryPoint {
+public class BookStack implements EntryPoint {
 
 	/**
 	 * This is the entry point method.
@@ -32,13 +32,12 @@ public class MQ implements EntryPoint {
 		mainPanel.add(inputPanel);
 
 		MultiWordSuggestOracle oracle = new MultiWordSuggestOracle();
-		oracle.add("Cat Ballou");
-		oracle.add("Dog");
-		oracle.add("Horse");
+		oracle.add("Clean Code");
+		oracle.add("Infinite Jest");
+		oracle.add("The Art of Agile Development");
 		oracle.add("Canary");
 
 		final SuggestBox addBox = new SuggestBox(oracle);
-
 		inputPanel.add(addBox);
 
 		final Button addButton = new Button("Add");
@@ -52,13 +51,13 @@ public class MQ implements EntryPoint {
 			public void onClick(ClickEvent event) {
 				String title = addBox.getText();
 				if (title.length() > 0) {
-					queuePanel.insert(new MoviePanel(title, queuePanel), 0);
+					queuePanel.insert(new BookPanel(title, queuePanel), 0);
 					addBox.setText("");
 				}
 			}
 		});
 
-		queuePanel.add(new MoviePanel("Agile Principles, Patterns, and Practices in C#", queuePanel));
+		queuePanel.add(new BookPanel("Agile Principles, Patterns, and Practices in C#", queuePanel));
 
 	}
 }

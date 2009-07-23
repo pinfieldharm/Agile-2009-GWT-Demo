@@ -8,9 +8,6 @@
 	<!-- Inherit the default GWT style sheet. -->
 	<inherits name='com.google.gwt.user.theme.standard.Standard' />
 
-	<!-- Inherit gwt-dnd support -->
-	<inherits name='com.allen_sauer.gwt.dnd.gwt-dnd' />
-
 	<!-- Specify the app entry point class. -->
-	<entry-point class='mq.client.MQ' />
+	<entry-point class='mq.client.BookStack' />
 </module>

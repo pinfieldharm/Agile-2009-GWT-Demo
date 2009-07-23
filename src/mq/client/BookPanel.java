@@ -10,12 +10,12 @@ import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
-public final class MoviePanel extends FlowPanel {
+public final class BookPanel extends FlowPanel {
 	private final VerticalPanel queuePanel;
 
-	public MoviePanel(String title, VerticalPanel queuePanel) {
+	public BookPanel(String title, VerticalPanel queuePanel) {
 		this.queuePanel = queuePanel;
-		this.setStylePrimaryName("moviepanel");
+		this.setStylePrimaryName("bookPanel");
 		this.add(new Label(title));
 		addRemoveButton();
 		addTopButton();
@@ -27,8 +27,8 @@ public final class MoviePanel extends FlowPanel {
 		this.add(topButton);
 		topButton.addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event) {
-				MoviePanel.this.removeFromParent();
-				queuePanel.insert(MoviePanel.this, 0);
+				BookPanel.this.removeFromParent();
+				queuePanel.insert(BookPanel.this, 0);
 			}
 		});
 	}
@@ -39,7 +39,7 @@ public final class MoviePanel extends FlowPanel {
 		this.add(removeButton);
 		removeButton.addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event) {
-				queuePanel.remove(MoviePanel.this);
+				queuePanel.remove(BookPanel.this);
 			}
 		});
 	}

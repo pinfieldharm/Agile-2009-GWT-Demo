@@ -7,18 +7,18 @@ html, body {
 	align: center;
 }
 
-.moviePanel {
+.bookPanel {
 	padding: 10px;
 	width: 400px;
 	margin: 5px;
 	background-color: #F0F0FF;
 }
 
-.moviePanel .gwt-Image {
+.bookPanel .gwt-Image {
 	width: 20px;
 }
 
-.moviePanel .gwt-Label {
+.bookPanel .gwt-Label {
 	float: left;
 	width: 360px;
 }
@@ -35,7 +35,7 @@ html, body {
 	margin: 5px;
 }
 
-.inputPanel .gwt-TextBox {
+.inputPanel .gwt-SuggestBox {
 	width: 350px;
 }
 

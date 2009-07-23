@@ -2,11 +2,11 @@ package mq.client;
 
 import com.google.gwt.junit.client.GWTTestCase;
 
-public class AddMovieFunctionalTest extends GWTTestCase {
+public class AddBookFunctionalTest extends GWTTestCase {
 
 	@Override
 	public String getModuleName() {
-		return "mq.MQ";
+		return "mq.BookStack";
 	}
 	
 	public void testSuccess() {
