@@ -3,44 +3,38 @@
  */
 package mq.client;
 
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.VerticalPanel;
 
 public final class BookPanel extends FlowPanel {
-	private final VerticalPanel queuePanel;
+	
+	private Image topButton;
+	private Image removeButton;
+	private Label label;
 
-	public BookPanel(String title, VerticalPanel queuePanel) {
-		this.queuePanel = queuePanel;
+	public BookPanel(String title) {
 		this.setStylePrimaryName("bookPanel");
-		this.add(new Label(title));
-		addRemoveButton();
-		addTopButton();
-	}
-
-	private void addTopButton() {
-		
-		Image topButton = new Image("icons/arrow_up.png");
+		label = new Label(title);
+		this.add(label);
+		topButton = new Image("icons/arrow_up.png");
 		this.add(topButton);
-		topButton.addClickHandler(new ClickHandler() {
-			public void onClick(ClickEvent event) {
-				BookPanel.this.removeFromParent();
-				queuePanel.insert(BookPanel.this, 0);
-			}
-		});
+		removeButton = new Image("icons/cross.png");
+		this.add(removeButton);
 	}
 
-	private void addRemoveButton() {
-		
-		Image removeButton = new Image("icons/cross.png");
-		this.add(removeButton);
-		removeButton.addClickHandler(new ClickHandler() {
-			public void onClick(ClickEvent event) {
-				queuePanel.remove(BookPanel.this);
-			}
-		});
+	public Image getTopButton() {
+		return topButton;
 	}
+
+	public Image getRemoveButton() {
+		return removeButton;
+	}
+
+	public Label getLabel() {
+		return label;
+	}
+	
+	
+
 }
