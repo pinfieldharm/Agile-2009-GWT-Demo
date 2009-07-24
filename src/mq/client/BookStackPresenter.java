@@ -1,5 +1,12 @@
 package mq.client;
 
+import mq.client.model.Model;
+import mq.client.model.ModelChangeEvent;
+import mq.client.view.AddButtonClickedEvent;
+import mq.client.view.BookPanel;
+import mq.client.view.RemoveButtonClickedEvent;
+import mq.client.view.View;
+
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.shared.HandlerManager;

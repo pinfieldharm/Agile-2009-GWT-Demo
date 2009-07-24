@@ -1,6 +1,7 @@
-package mq.client;
+package mq.client.model;
 
 import java.util.ArrayList;
+
 
 import com.google.gwt.event.shared.HandlerManager;
 
