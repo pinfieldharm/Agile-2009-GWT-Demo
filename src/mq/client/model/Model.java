@@ -14,26 +14,54 @@ public class Model {
 	public Model(HandlerManager eventBus) {
 		this.eventBus = eventBus;
 	}
-	
-	public void addTitle(String title) {
-		titles.add(0, title);
-		eventBus.fireEvent(new ModelChangeEvent());
-	}
-	
+
 	public ArrayList<String> getTitles() {
 		return titles;
 	}
+	
+	public void addTitle(String title) {
+		insertAtBeginning(title);
+		fireChangeEvent();
+	}
 
 	public void removeTitle(int position) {
-		titles.remove(position);
+		if (isOutOfBounds(position)) return;
+		
+		removeTitleAt(position);
+		fireChangeEvent();
+	}
+
+	public void moveTitleUp(int position) {
+		if (isOutOfBounds(position) || isFirst(position)) return;
+
+		moveTitleUpAt(position);
+		fireChangeEvent();
+	}
+
+	private void insertAtBeginning(String title) {
+		titles.add(0, title);
+	}
+	
+	private void fireChangeEvent() {
 		eventBus.fireEvent(new ModelChangeEvent());
 	}
 	
-	public void moveTitleUp(int position) {
-		if (position == 0) return;
+	private void removeTitleAt(int position) {
+		titles.remove(position);
+	}
+	
+	private void moveTitleUpAt(int position) {
 		String title = titles.remove(position);
 		titles.add(position - 1, title);
-		eventBus.fireEvent(new ModelChangeEvent());
 	}
+
+	private boolean isFirst(int position) {
+		return position == 0;
+	}
+
+	private boolean isOutOfBounds(int position) {
+		return position < 0 || position >= titles.size();
+	}
+	
 
 }
