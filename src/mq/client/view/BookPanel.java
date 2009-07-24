@@ -9,7 +9,7 @@ import com.google.gwt.user.client.ui.Label;
 
 public final class BookPanel extends FlowPanel {
 	
-	private Image topButton;
+	private Image upButton;
 	private Image removeButton;
 	private Label label;
 
@@ -17,14 +17,14 @@ public final class BookPanel extends FlowPanel {
 		this.setStylePrimaryName("bookPanel");
 		label = new Label(title);
 		this.add(label);
-		topButton = new Image("icons/arrow_up.png");
-		this.add(topButton);
+		upButton = new Image("icons/arrow_up.png");
+		this.add(upButton);
 		removeButton = new Image("icons/cross.png");
 		this.add(removeButton);
 	}
 
-	public Image getTopButton() {
-		return topButton;
+	public Image getUpButton() {
+		return upButton;
 	}
 
 	public Image getRemoveButton() {

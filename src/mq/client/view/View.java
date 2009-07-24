@@ -41,9 +41,6 @@ public class View {
 		stackPanel = new VerticalPanel();
 		stackPanel.setStylePrimaryName("stackPanel");
 		mainPanel.add(stackPanel);
-
-		
-		
 	}
 
 	public Button getAddButton() {

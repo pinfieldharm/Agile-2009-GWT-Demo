@@ -24,8 +24,15 @@ public class Model {
 		return titles;
 	}
 
-	public void removeTitle(String text) {
-		titles.remove(text);
+	public void removeTitle(int position) {
+		titles.remove(position);
+		eventBus.fireEvent(new ModelChangeEvent());
+	}
+	
+	public void moveTitleUp(int position) {
+		if (position == 0) return;
+		String title = titles.remove(position);
+		titles.add(position - 1, title);
 		eventBus.fireEvent(new ModelChangeEvent());
 	}
 

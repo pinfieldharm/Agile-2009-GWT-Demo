@@ -18,7 +18,7 @@ public class BookStack implements EntryPoint {
 		HandlerManager eventBus = new HandlerManager(null);
 		View view = new View();
 		Model model = new Model(eventBus);
-		new BookStackPresenter(eventBus, view, model);
+		new Presenter(eventBus, view, model);
 		model.addTitle("This is a test");
 	}
 }

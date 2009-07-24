@@ -23,7 +23,7 @@ public class RemoveButtonClickedEvent extends GwtEvent<RemoveButtonClickedEvent.
 	}
 
 	@Override
-	public com.google.gwt.event.shared.GwtEvent.Type<Handler> getAssociatedType() {
+	public Type<Handler> getAssociatedType() {
 		return TYPE;
 	}
 

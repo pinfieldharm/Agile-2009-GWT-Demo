@@ -5,6 +5,7 @@ import mq.client.model.ModelChangeEvent;
 import mq.client.view.AddButtonClickedEvent;
 import mq.client.view.BookPanel;
 import mq.client.view.RemoveButtonClickedEvent;
+import mq.client.view.UpButtonClickedEvent;
 import mq.client.view.View;
 
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -12,13 +13,13 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.shared.HandlerManager;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
-public class BookStackPresenter implements AddButtonClickedEvent.Handler, RemoveButtonClickedEvent.Handler, ModelChangeEvent.Handler {
+public class Presenter implements AddButtonClickedEvent.Handler, RemoveButtonClickedEvent.Handler, UpButtonClickedEvent.Handler, ModelChangeEvent.Handler {
 
 	private final HandlerManager eventBus;
 	private final View view;
 	private final Model model;
 
-	public BookStackPresenter(final HandlerManager eventBus, final View view,
+	public Presenter(final HandlerManager eventBus, final View view,
 			final Model model) {
 
 		this.eventBus = eventBus;
@@ -35,6 +36,7 @@ public class BookStackPresenter implements AddButtonClickedEvent.Handler, Remove
 		/* Bind to higher-level UI events */
 		eventBus.addHandler(AddButtonClickedEvent.TYPE, this);
 		eventBus.addHandler(RemoveButtonClickedEvent.TYPE, this);
+		eventBus.addHandler(UpButtonClickedEvent.TYPE, this);
 
 		/* Bind to model events */
 		eventBus.addHandler(ModelChangeEvent.TYPE, this);
@@ -57,7 +59,9 @@ public class BookStackPresenter implements AddButtonClickedEvent.Handler, Remove
 	}
 
 	public void onRemoveButtonClicked(RemoveButtonClickedEvent removeButtonClickedEvent) {
-		model.removeTitle(removeButtonClickedEvent.getPanel().getLabel().getText());
+		BookPanel bookPanel = removeButtonClickedEvent.getPanel();
+		int position = view.getStackPanel().getWidgetIndex(bookPanel);
+		model.removeTitle(position);
 	}
 
 	public void onModelChange(ModelChangeEvent addEvent) {
@@ -71,7 +75,19 @@ public class BookStackPresenter implements AddButtonClickedEvent.Handler, Remove
 					eventBus.fireEvent(new RemoveButtonClickedEvent(bookPanel));
 				}
 			});
+			bookPanel.getUpButton().addClickHandler(new ClickHandler() {
+				public void onClick(ClickEvent event) {
+					eventBus.fireEvent(new UpButtonClickedEvent(bookPanel));
+				}
+			});
+
 		}
+	}
+
+	public void onUpButtonClicked(UpButtonClickedEvent removeButtonClickedEvent) {
+		BookPanel bookPanel = removeButtonClickedEvent.getPanel();
+		int position = view.getStackPanel().getWidgetIndex(bookPanel);
+		model.moveTitleUp(position);
 	}
 
 }
