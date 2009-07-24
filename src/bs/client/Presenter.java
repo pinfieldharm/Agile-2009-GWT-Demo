@@ -43,14 +43,6 @@ public class Presenter implements AddButtonClickedEvent.Handler, RemoveButtonCli
 		eventBus.addHandler(ModelChangeEvent.TYPE, this);
 	}
 
-	/*
-	 * private void addTopButton() {
-	 * 
-	 * topButton.addClickHandler(new ClickHandler() { public void
-	 * onClick(ClickEvent event) { BookPanel.this.removeFromParent();
-	 * queuePanel.insert(BookPanel.this, 0); } }); }
-	 */
-
 	public void onAddButtonClicked(AddButtonClickedEvent addButtonClickedEvent) {
 		String title = view.getAddBox().getText().trim();
 		if (title.length() > 0) {
