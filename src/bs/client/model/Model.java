@@ -1,4 +1,4 @@
-package mq.client.model;
+package bs.client.model;
 
 import java.util.ArrayList;
 

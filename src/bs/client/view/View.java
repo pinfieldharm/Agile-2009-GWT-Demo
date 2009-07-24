@@ -1,4 +1,4 @@
-package mq.client.view;
+package bs.client.view;
 
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.HTML;

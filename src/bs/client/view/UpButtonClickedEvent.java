@@ -1,4 +1,4 @@
-package mq.client.view;
+package bs.client.view;
 
 
 import com.google.gwt.event.shared.EventHandler;

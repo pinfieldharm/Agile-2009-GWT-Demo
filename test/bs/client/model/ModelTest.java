@@ -1,4 +1,4 @@
-package mq.client.model;
+package bs.client.model;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertFalse;
@@ -12,6 +12,9 @@ import static org.mockito.Mockito.verify;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import bs.client.model.Model;
+import bs.client.model.ModelChangeEvent;
 
 import com.google.gwt.event.shared.HandlerManager;
 

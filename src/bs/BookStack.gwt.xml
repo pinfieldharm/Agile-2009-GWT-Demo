@@ -9,5 +9,5 @@
 	<inherits name='com.google.gwt.user.theme.standard.Standard' />
 
 	<!-- Specify the app entry point class. -->
-	<entry-point class='mq.client.BookStack' />
+	<entry-point class='bs.client.BookStack' />
 </module>

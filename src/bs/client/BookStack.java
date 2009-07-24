@@ -1,7 +1,8 @@
-package mq.client;
+package bs.client;
 
-import mq.client.model.Model;
-import mq.client.view.View;
+
+import bs.client.model.Model;
+import bs.client.view.View;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.event.shared.HandlerManager;

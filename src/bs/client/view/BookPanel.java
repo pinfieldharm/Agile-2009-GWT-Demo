@@ -1,7 +1,7 @@
 /**
  * 
  */
-package mq.client.view;
+package bs.client.view;
 
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.Image;
