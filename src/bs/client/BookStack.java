@@ -20,6 +20,5 @@ public class BookStack implements EntryPoint {
 		View view = new View();
 		Model model = new Model(eventBus);
 		new Presenter(eventBus, view, model);
-		model.addTitle("This is a test");
 	}
 }

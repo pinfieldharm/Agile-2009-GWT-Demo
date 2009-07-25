@@ -26,11 +26,7 @@ public class View {
 		inputPanel.setStylePrimaryName("inputPanel");
 		mainPanel.add(inputPanel);
 
-		MultiWordSuggestOracle oracle = new MultiWordSuggestOracle();
-		oracle.add("Clean Code");
-		oracle.add("Infinite Jest");
-		oracle.add("The Art of Agile Development");
-		oracle.add("Canary");
+		MultiWordSuggestOracle oracle = new TitleOracle();
 
 		addBox = new SuggestBox(oracle);
 		inputPanel.add(addBox);

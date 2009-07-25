@@ -9,16 +9,22 @@ html, body {
 
 .bookPanel {
 	padding: 10px;
-	width: 400px;
+	width: 410px;
 	margin: 5px;
 	background-color: #F0F0FF;
 }
 
-.bookPanel .gwt-Image {
+.upButton, .removeButton {
 	width: 20px;
+	cursor: pointer;
+	border: solid #F0F0FF 1px;
 }
 
-.bookPanel .gwt-Label {
+.upButton:hover, .removeButton:hover {
+	border-color: silver;
+}
+
+.bookTitle {
 	float: left;
 	width: 360px;
 }
@@ -30,15 +36,11 @@ html, body {
 
 .inputPanel {
 	background-color: #F0F0F0;
-	width: 420px;
+	width: 430px;
 	padding: 10px;
 	margin: 5px;
 }
 
 .inputPanel .gwt-SuggestBox {
 	width: 350px;
-}
-
-.inputPanel .gwt-Image {
-	float: right;	
 }
