@@ -19,10 +19,11 @@ public final class BookPanel extends FlowPanel {
 		label.setStylePrimaryName("bookTitle");
 
 		this.add(label);
+
 		upButton = new Image("icons/arrow_up.png");
 		upButton.setStylePrimaryName("upButton");
-
 		this.add(upButton);
+		
 		removeButton = new Image("icons/cross.png");
 		removeButton.setStylePrimaryName("removeButton");
 		this.add(removeButton);
