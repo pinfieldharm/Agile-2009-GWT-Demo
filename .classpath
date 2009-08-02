@@ -2,12 +2,12 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="test"/>
-	<classpathentry kind="con" path="com.google.gwt.eclipse.core.GWT_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="lib/mockito-all-1.8.0.jar"/>
 	<classpathentry kind="lib" path="lib/junit-dep-4.5.jar"/>
 	<classpathentry kind="lib" path="lib/json-20080701.jar"/>
 	<classpathentry kind="lib" path="lib/webdriver-common.jar" sourcepath="/Users/paul/webdriver-1039/common/src/java"/>
 	<classpathentry kind="lib" path="lib/webdriver-firefox.jar" sourcepath="/Users/paul/webdriver-1039/firefox/src/java"/>
+	<classpathentry kind="con" path="com.google.gwt.eclipse.core.GWT_CONTAINER"/>
 	<classpathentry kind="output" path="war/WEB-INF/classes"/>
 </classpath>

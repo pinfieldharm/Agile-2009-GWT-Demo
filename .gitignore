@@ -5,3 +5,4 @@ www-test/
 # Compiler output is ignored
 war/WEB-INF/classes/
 war/bs/
+war/WEB-INF/lib/gwt-servlet.jar
