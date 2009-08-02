@@ -1,8 +1,8 @@
-package bs.client;
+package books.client;
 
 
-import bs.client.model.Model;
-import bs.client.view.View;
+import books.client.model.Model;
+import books.client.view.View;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.event.shared.HandlerManager;

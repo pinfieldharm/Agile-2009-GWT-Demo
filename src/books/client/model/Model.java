@@ -1,4 +1,4 @@
-package bs.client.model;
+package books.client.model;
 
 import java.util.ArrayList;
 

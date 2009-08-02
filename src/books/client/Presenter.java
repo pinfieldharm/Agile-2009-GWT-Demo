@@ -1,13 +1,13 @@
-package bs.client;
+package books.client;
 
 
-import bs.client.model.Model;
-import bs.client.model.ModelChangeEvent;
-import bs.client.view.AddButtonClickedEvent;
-import bs.client.view.BookPanel;
-import bs.client.view.RemoveButtonClickedEvent;
-import bs.client.view.UpButtonClickedEvent;
-import bs.client.view.View;
+import books.client.model.Model;
+import books.client.model.ModelChangeEvent;
+import books.client.view.AddButtonClickedEvent;
+import books.client.view.BookPanel;
+import books.client.view.RemoveButtonClickedEvent;
+import books.client.view.UpButtonClickedEvent;
+import books.client.view.View;
 
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;

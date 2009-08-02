@@ -1,15 +1,14 @@
-package bs.client.model;
+package books.client.view;
 
 import com.google.gwt.event.shared.EventHandler;
 import com.google.gwt.event.shared.GwtEvent;
 
-public class ModelChangeEvent extends GwtEvent<ModelChangeEvent.Handler>{
-
+public class AddButtonClickedEvent extends GwtEvent<AddButtonClickedEvent.Handler>{
 	public static final Type<Handler> TYPE = new Type<Handler>();
-	
+
 	@Override
 	protected void dispatch(Handler handler) {
-		handler.onModelChange(this);
+		handler.onAddButtonClicked(this);
 	}
 
 	@Override
@@ -18,8 +17,9 @@ public class ModelChangeEvent extends GwtEvent<ModelChangeEvent.Handler>{
 	}
 	
 	public interface Handler extends EventHandler {
-		void onModelChange(ModelChangeEvent addEvent);
+		void onAddButtonClicked(AddButtonClickedEvent addButtonClickedEvent);
 	}
 
-	
 }
+
+

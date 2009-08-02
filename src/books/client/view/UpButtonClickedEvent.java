@@ -1,4 +1,4 @@
-package bs.client.view;
+package books.client.view;
 
 
 import com.google.gwt.event.shared.EventHandler;
