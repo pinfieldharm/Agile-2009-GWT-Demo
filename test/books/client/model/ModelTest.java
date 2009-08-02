@@ -7,14 +7,12 @@ import static org.junit.Assert.assertTrue;
 import static org.mockito.Matchers.isA;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
-import static org.mockito.Mockito.reset;
 import static org.mockito.Mockito.verify;
+
+import java.util.Arrays;
 
 import org.junit.Before;
 import org.junit.Test;
-
-import books.client.model.Model;
-import books.client.model.ModelChangeEvent;
 
 import com.google.gwt.event.shared.HandlerManager;
 
@@ -39,16 +37,16 @@ public class ModelTest {
 	
 	@Test
 	public void additionsGoToTopOfList() {
-		model.addTitle("First added");
+		startingWithTitles("First added");
+
 		model.addTitle("Second added");
 		
-		assertThat(model.getTitles().get(1), is("Second added"));
+		assertThat(model.getTitles().get(0), is("Second added"));
 	}
 	
 	@Test
 	public void removeRemovesTitleAndFiresEvent() {
-		model.addTitle("Foo");
-		reset(eventBus);
+		startingWithTitles("Foo");
 		
 		model.removeTitle(0);
 
@@ -58,8 +56,7 @@ public class ModelTest {
 		
 	@Test
 	public void outOfBoundsRemovalIndicesAreIgnored() {
-		model.addTitle("Foo");
-		reset(eventBus);
+		startingWithTitles("Foo");
 		
 		model.removeTitle(-1);
 		model.removeTitle(12);
@@ -69,22 +66,18 @@ public class ModelTest {
 	
 	@Test
 	public void testMoveTitleUpMovesAndFiresEvent() {
-		model.addTitle("A");
-		model.addTitle("B");
-		model.addTitle("C");
-		reset(eventBus);
+		startingWithTitles("A", "B", "C");
 
-		// Stack is C,B,A
 		model.moveTitleUp(2);
 		
-		assertThat(model.getTitles().get(1), is("A"));
+		assertThat(model.getTitles().get(1), is("C"));
+		assertThat(model.getTitles().get(2), is("B"));
 		verify(eventBus).fireEvent(isA(ModelChangeEvent.class));
 	}
 
 	@Test
 	public void outOfBoundsIndicesAreIgnored() {
-		model.addTitle("Foo");
-		reset(eventBus);
+		startingWithTitles("Foo");
 		
 		model.moveTitleUp(-1);
 		model.moveTitleUp(12);
@@ -95,12 +88,15 @@ public class ModelTest {
 
 	@Test
 	public void zeroIndicesAreIgnoredForMovingUp() {
-		model.addTitle("Foo");
-		reset(eventBus);
+		startingWithTitles("Foo");
 		
 		model.moveTitleUp(0);
 
 		verify(eventBus, never()).fireEvent(isA(ModelChangeEvent.class));
+	}
+	
+	private void startingWithTitles(String... titles) {
+		model.getTitles().addAll(Arrays.asList(titles));
 	}
 
 }

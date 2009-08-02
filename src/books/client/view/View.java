@@ -3,7 +3,6 @@ package books.client.view;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HorizontalPanel;
-import com.google.gwt.user.client.ui.MultiWordSuggestOracle;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.SuggestBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
@@ -26,9 +25,7 @@ public class View {
 		inputPanel.setStylePrimaryName("inputPanel");
 		mainPanel.add(inputPanel);
 
-		MultiWordSuggestOracle oracle = new TitleOracle();
-
-		addBox = new SuggestBox(oracle);
+		addBox = new TitleSuggestBox();
 		inputPanel.add(addBox);
 
 		addButton = new Button("Add");

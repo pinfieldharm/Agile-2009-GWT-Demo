@@ -7,14 +7,14 @@ import com.google.gwt.event.shared.HandlerManager;
 
 public class Model {
 	
-	private ArrayList<String> titles = new ArrayList<String>();
+	protected ArrayList<String> titles = new ArrayList<String>();
 	
 	private HandlerManager eventBus;
 	
 	public Model(HandlerManager eventBus) {
 		this.eventBus = eventBus;
 	}
-
+	
 	public ArrayList<String> getTitles() {
 		return titles;
 	}
