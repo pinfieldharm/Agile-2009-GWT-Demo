@@ -17,18 +17,9 @@ public class BookStackWebDriverTest {
 
 	private WebDriver driver;
 
-	@Before
-	public void setUp() {
-		driver = new FirefoxDriver();
-	}
-	
-	@After
-	public void tearDown() {
-		driver.quit();
-	}
-
 	@Test
 	public void addAndRemoveATitle() throws InterruptedException {
+		driver = new FirefoxDriver("WebDriver");
 		openAppPage();
 		
 		addTitle("First title");

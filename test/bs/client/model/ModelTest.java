@@ -42,7 +42,7 @@ public class ModelTest {
 		model.addTitle("First added");
 		model.addTitle("Second added");
 		
-		assertThat(model.getTitles().get(0), is("Second added"));
+		assertThat(model.getTitles().get(1), is("Second added"));
 	}
 	
 	@Test

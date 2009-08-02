@@ -1,20 +1,30 @@
 /** Add css rules here for your application. */
 
 html, body {
-	height: 100%;
-	width: 100%;
 	padding: 20px;
-	align: center;
 }
 
 .bookPanel {
 	padding: 10px;
-	width: 410px;
+	width: 400px;
 	margin: 5px;
+	border: solid gray 5px;
+	position: relative;
 	background-color: #F0F0FF;
 }
 
+.upButton {
+	right: 35px;
+}
+
+.removeButton {
+	right: 5px;
+}
+
+
 .upButton, .removeButton {
+	position: absolute;
+	top: 10px;
 	width: 20px;
 	cursor: pointer;
 	border: solid #F0F0FF 1px;
@@ -25,8 +35,8 @@ html, body {
 }
 
 .bookTitle {
-	float: left;
-	width: 360px;
+	font-size: large;
+	width: 340px;
 }
 
 .mainPanel {
