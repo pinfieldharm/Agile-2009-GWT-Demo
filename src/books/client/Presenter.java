@@ -28,7 +28,7 @@ public class Presenter implements AddButtonClickedEvent.Handler, RemoveButtonCli
 		this.model = model;
 
 		/* Bind low-level UI events */
-		view.getAddButton().addClickHandler(new ClickHandler() {
+		view.getInputPanel().getAddButton().addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event) {
 				eventBus.fireEvent(new AddButtonClickedEvent());
 			}
@@ -44,11 +44,11 @@ public class Presenter implements AddButtonClickedEvent.Handler, RemoveButtonCli
 	}
 
 	public void onAddButtonClicked(AddButtonClickedEvent addButtonClickedEvent) {
-		String title = view.getAddBox().getText().trim();
+		String title = view.getInputPanel().getAddBox().getText().trim();
 		if (title.length() > 0) {
 			model.addTitle(title);
 		}
-		view.getAddBox().setText("");
+		view.getInputPanel().getAddBox().setText("");
 	}
 
 	public void onRemoveButtonClicked(RemoveButtonClickedEvent removeButtonClickedEvent) {

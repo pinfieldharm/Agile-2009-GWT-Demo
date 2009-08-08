@@ -3,11 +3,11 @@
  */
 package books.client.view;
 
-import com.google.gwt.user.client.ui.FlowPanel;
+import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
 
-public final class BookPanel extends FlowPanel {
+public final class BookPanel extends HorizontalPanel {
 	
 	private Image upButton;
 	private Image removeButton;
@@ -23,10 +23,13 @@ public final class BookPanel extends FlowPanel {
 		upButton = new Image("icons/arrow_up.png");
 		upButton.setStylePrimaryName("upButton");
 		this.add(upButton);
+		this.setCellWidth(upButton, "35px");
 		
 		removeButton = new Image("icons/cross.png");
 		removeButton.setStylePrimaryName("removeButton");
-		this.add(removeButton);
+		this.add(removeButton);		
+		this.setCellWidth(removeButton, "35px");
+
 	}
 
 	public Image getUpButton() {

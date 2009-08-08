@@ -1,30 +1,35 @@
 /** Add css rules here for your application. */
 
-html, body {
-	padding: 20px;
+html {
+	margin: 10px;
+	background-color: black;
+}
+
+body {
+	background-color: black !important;
+	background-image:url('icons/pile.png') !important;
+	background-repeat:no-repeat !important;
+	background-position:bottom left !important;
+}
+
+
+.mainPanel h1 {
+	padding-left: 300px;
+	font-size: xx-large;
+	height: 50px;
+	color: white;
+}
+
+.stackPanel {
+	width: 100%;
 }
 
 .bookPanel {
-	padding: 10px;
-	width: 400px;
-	margin: 5px;
 	border: solid gray 5px;
-	position: relative;
 	background-color: #F0F0FF;
 }
 
-.upButton {
-	right: 35px;
-}
-
-.removeButton {
-	right: 5px;
-}
-
-
 .upButton, .removeButton {
-	position: absolute;
-	top: 10px;
 	width: 20px;
 	cursor: pointer;
 	border: solid #F0F0FF 1px;
@@ -36,21 +41,40 @@ html, body {
 
 .bookTitle {
 	font-size: large;
-	width: 340px;
 }
 
 .mainPanel {
-	align: center;
 	width: 100%;
 }
 
-.inputPanel {
+.inputPanel, .bookPanel {
 	background-color: #F0F0F0;
-	width: 430px;
+	width: 100%;
 	padding: 10px;
 	margin: 5px;
 }
 
+.inputPanel, .bookPanel {
+	background-color: #F0F0F0;
+	padding: 10px;
+	margin: 5px;
+}
+
+.inputPanel {
+	background-color: #F0F0F0;
+	width: 100%;
+}
+
+.inputPanel .gwt-Button {
+	font-size: larger;
+}
+
+
 .inputPanel .gwt-SuggestBox {
-	width: 350px;
+	width: 100%;
+	font-size: larger;
+}
+
+.gwt-SuggestBoxPopup .item {
+	font-size: larger;
 }
