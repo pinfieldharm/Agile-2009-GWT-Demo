@@ -1,0 +1,14 @@
+Icons:
+    war/icons/arrow_up.png
+    war/icons/cross.png
+        The delete and up icons for the demo app were provided by famfamfam under the Creative Commons 2.5 Attribution License http://creativecommons.org/licenses/by/2.5/.  
+        The home page for the famfamfam icons set is http://www.famfamfam.com/lab/icons/silk/
+    war/icons/pile.png
+        The background image was provided by austinevan under a Creative Commons 2.0 Attribution License http://creativecommons.org/licenses/by/2.0/
+        The original may be found on flickr here: http://www.flickr.com/photos/austinevan/1225274637/sizes/l/
+
+Libraries:
+    lib/junit-dep-4.5.jar is provided under a BSD license.  See LICENSE.txt in the archive for more detail.
+    lib/mockito-all-1.8.0.jar is provided under an MIT license, and contains libraries under other licenses.  See LICENSE and NOTICE in the archive for more detail.  
+
+All other files are provided under the Creative Commons Zero ("public domain") license.
