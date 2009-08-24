@@ -3,6 +3,7 @@
  */
 package books.client.view;
 
+import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.SuggestBox;
@@ -27,7 +28,7 @@ public class InputPanelImpl extends HorizontalPanel implements InputPanel {
 	/* (non-Javadoc)
 	 * @see books.client.view.InputPanel#getAddButton()
 	 */
-	public Button getAddButton() {
+	public HasClickHandlers getAddButton() {
 		return addButton;
 	}
 
