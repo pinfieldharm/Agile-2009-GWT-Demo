@@ -7,12 +7,12 @@ import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.SuggestBox;
 
-public class InputPanel extends HorizontalPanel {
+public class InputPanelImpl extends HorizontalPanel implements InputPanel {
 
 	private Button addButton;
 	private SuggestBox addBox;
 	
-	public InputPanel() {
+	public InputPanelImpl() {
 		this.setStylePrimaryName("inputPanel");
 		addBox = new TitleSuggestBox();
 		this.add(addBox);
@@ -24,10 +24,16 @@ public class InputPanel extends HorizontalPanel {
 		this.setCellHorizontalAlignment(addButton, ALIGN_RIGHT);
 	}
 	
+	/* (non-Javadoc)
+	 * @see books.client.view.InputPanel#getAddButton()
+	 */
 	public Button getAddButton() {
 		return addButton;
 	}
 
+	/* (non-Javadoc)
+	 * @see books.client.view.InputPanel#getAddBox()
+	 */
 	public SuggestBox getAddBox() {
 		return addBox;
 	}
