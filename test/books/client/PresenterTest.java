@@ -1,16 +1,22 @@
 package books.client;
 
+import static java.util.Arrays.asList;
+import static org.mockito.Matchers.isA;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
+import java.util.ArrayList;
+
 import org.junit.Before;
 import org.junit.Test;
-
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.isA;
+import org.mockito.Mockito;
 
 import books.client.model.Model;
 import books.client.model.ModelChangeEvent;
 import books.client.view.AddButtonClickedEvent;
+import books.client.view.BookPanel;
+import books.client.view.BookStackPanel;
 import books.client.view.InputPanel;
 import books.client.view.RemoveButtonClickedEvent;
 import books.client.view.UpButtonClickedEvent;
@@ -30,6 +36,7 @@ public class PresenterTest {
 	private HasClickHandlers addButton;
 	private InputPanel inputPanel;
 	private HasText addBox;
+	private BookStackPanel bookStackPanel;
 
 	@Before
 	public void setUp() {
@@ -46,6 +53,9 @@ public class PresenterTest {
 		addBox = mock(HasText.class);
 		when(addBox.getText()).thenReturn("");
 		when(inputPanel.getAddBox()).thenReturn(addBox);
+		
+		bookStackPanel = mock(BookStackPanel.class);
+		when(view.getStackPanel()).thenReturn(bookStackPanel);
 		
 		presenter = new Presenter(eventBus, view, model);
 	}
@@ -113,4 +123,43 @@ public class PresenterTest {
 		presenter.new AddButtonUIClickHandler().onClick(mock(ClickEvent.class));
 		verify(eventBus).fireEvent(isA(AddButtonClickedEvent.class));
 	}
+	
+	@Test
+	public void clearsStackPanelAndAddsEachTitleWhenModelChanges() {
+		ArrayList<String> titles = new ArrayList<String>(asList("foo", "bar", "baz"));
+		when(model.getTitles()).thenReturn(titles);
+		BookPanel bookPanel = mockBookPanel();
+		when(bookStackPanel.addBookPanel(Mockito.anyString())).thenReturn(bookPanel);
+
+		presenter.onModelChange(new ModelChangeEvent());
+
+		verify(bookStackPanel).clear();
+		verify(bookStackPanel).addBookPanel("foo");
+		verify(bookStackPanel).addBookPanel("bar");
+		verify(bookStackPanel).addBookPanel("baz");
+	}
+
+	@Test
+	public void addsPresenterAsEventHandlerToNewPanelsWhenModelChanges() {
+		ArrayList<String> titles = new ArrayList<String>(asList("foo"));
+		when(model.getTitles()).thenReturn(titles);
+		BookPanel bookPanel = mockBookPanel();
+		when(bookStackPanel.addBookPanel(Mockito.anyString())).thenReturn(bookPanel);
+
+		presenter.onModelChange(new ModelChangeEvent());
+
+		verify(bookPanel.getRemoveButton()).addClickHandler(isA(Presenter.RemoveButtonUIClickHandler.class));
+		verify(bookPanel.getUpButton()).addClickHandler(isA(Presenter.UpButtonUIClickHandler.class));
+	}
+
+	private BookPanel mockBookPanel() {
+		BookPanel bookPanel = mock(BookPanel.class);
+		HasClickHandlers removeButton = mock(HasClickHandlers.class);
+		when(bookPanel.getRemoveButton()).thenReturn(removeButton);
+		HasClickHandlers addButton = mock(HasClickHandlers.class);
+		when(bookPanel.getUpButton()).thenReturn(addButton);
+		return bookPanel;
+	}
+
+
 }

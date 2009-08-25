@@ -3,11 +3,13 @@
  */
 package books.client.view;
 
+import com.google.gwt.event.dom.client.HasClickHandlers;
+import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
 
-public final class BookPanelImpl extends HorizontalPanel {
+public final class BookPanelImpl extends HorizontalPanel implements BookPanel {
 	
 	private Image upButton;
 	private Image removeButton;
@@ -32,18 +34,17 @@ public final class BookPanelImpl extends HorizontalPanel {
 
 	}
 
-	public Image getUpButton() {
+	public HasClickHandlers getUpButton() {
 		return upButton;
 	}
 
-	public Image getRemoveButton() {
+	public HasClickHandlers getRemoveButton() {
 		return removeButton;
 	}
 
-	public Label getLabel() {
+	public HasText getLabel() {
 		return label;
 	}
-	
 	
 
 }

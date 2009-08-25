@@ -4,6 +4,6 @@ public interface BookStackPanel {
 
 	void clear();
 
-	BookPanelImpl addBookPanel(String title);
+	BookPanel addBookPanel(String title);
 
 }
