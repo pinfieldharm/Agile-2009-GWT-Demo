@@ -6,7 +6,7 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 
 public class View {
 
-	private VerticalPanel stackPanel;
+	private BookStackPanelImpl stackPanel;
 	private InputPanelImpl inputPanel;
 
 	public View() {
@@ -20,13 +20,13 @@ public class View {
 		inputPanel = new InputPanelImpl();
 		mainPanel.add(inputPanel);
 
-		stackPanel = new VerticalPanel();
+		stackPanel = new BookStackPanelImpl();
 		stackPanel.setStylePrimaryName("stackPanel");
 
 		mainPanel.add(stackPanel);
 	}
 
-	public VerticalPanel getStackPanel() {
+	public BookStackPanel getStackPanel() {
 		return stackPanel;
 	}
 	

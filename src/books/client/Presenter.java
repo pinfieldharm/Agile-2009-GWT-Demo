@@ -5,6 +5,7 @@ import books.client.model.Model;
 import books.client.model.ModelChangeEvent;
 import books.client.view.AddButtonClickedEvent;
 import books.client.view.BookPanel;
+import books.client.view.BookStackPanel;
 import books.client.view.RemoveButtonClickedEvent;
 import books.client.view.UpButtonClickedEvent;
 import books.client.view.View;
@@ -12,7 +13,6 @@ import books.client.view.View;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.shared.HandlerManager;
-import com.google.gwt.user.client.ui.VerticalPanel;
 
 public class Presenter implements AddButtonClickedEvent.Handler, RemoveButtonClickedEvent.Handler, UpButtonClickedEvent.Handler, ModelChangeEvent.Handler {
 
@@ -48,13 +48,12 @@ public class Presenter implements AddButtonClickedEvent.Handler, RemoveButtonCli
 	}
 
 	public void onModelChange(ModelChangeEvent addEvent) {
-		VerticalPanel stackPanel = view.getStackPanel();
+		BookStackPanel stackPanel = view.getStackPanel();
 		stackPanel.clear();
 		
 		for (int i = 0; i < model.getTitles().size(); i++) {
 			String title = model.getTitles().get(i);
-			final BookPanel bookPanel = new BookPanel(title);
-			stackPanel.add(bookPanel);
+			BookPanel bookPanel = stackPanel.addBookPanel(title);
 			bookPanel.getRemoveButton().addClickHandler(new RemoveButtonUIClickHandler(i));
 			bookPanel.getUpButton().addClickHandler(new UpButtonUIClickHandler(i));
 		}
