@@ -7,14 +7,14 @@ import com.google.gwt.event.shared.GwtEvent;
 public class RemoveButtonClickedEvent extends GwtEvent<RemoveButtonClickedEvent.Handler> {
 	public static final Type<Handler> TYPE = new Type<Handler>();
 
-	private BookPanel panel;
+	private final int position;
 	
-	public RemoveButtonClickedEvent(BookPanel panel) {
-		this.panel = panel;
+	public RemoveButtonClickedEvent(int position) {
+		this.position = position;
 	}
 
-	public BookPanel getPanel() {
-		return panel;
+	public int getPosition() {
+		return position;
 	}
 	
 	@Override

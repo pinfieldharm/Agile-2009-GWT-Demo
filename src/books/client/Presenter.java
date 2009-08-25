@@ -28,11 +28,7 @@ public class Presenter implements AddButtonClickedEvent.Handler, RemoveButtonCli
 		this.model = model;
 
 		/* Bind low-level UI events */
-		view.getInputPanel().getAddButton().addClickHandler(new ClickHandler() {
-			public void onClick(ClickEvent event) {
-				eventBus.fireEvent(new AddButtonClickedEvent());
-			}
-		});
+		view.getInputPanel().getAddButton().addClickHandler(new AddButtonUIClickHandler());
 
 		/* Bind to higher-level UI events */
 		eventBus.addHandler(AddButtonClickedEvent.TYPE, this);
@@ -51,36 +47,56 @@ public class Presenter implements AddButtonClickedEvent.Handler, RemoveButtonCli
 		view.getInputPanel().getAddBox().setText("");
 	}
 
-	public void onRemoveButtonClicked(RemoveButtonClickedEvent removeButtonClickedEvent) {
-		BookPanel bookPanel = removeButtonClickedEvent.getPanel();
-		int position = view.getStackPanel().getWidgetIndex(bookPanel);
-		model.removeTitle(position);
-	}
-
 	public void onModelChange(ModelChangeEvent addEvent) {
 		VerticalPanel stackPanel = view.getStackPanel();
 		stackPanel.clear();
-		for (String title : model.getTitles()) {
+		
+		for (int i = 0; i < model.getTitles().size(); i++) {
+			String title = model.getTitles().get(i);
 			final BookPanel bookPanel = new BookPanel(title);
 			stackPanel.add(bookPanel);
-			bookPanel.getRemoveButton().addClickHandler(new ClickHandler() {
-				public void onClick(ClickEvent event) {
-					eventBus.fireEvent(new RemoveButtonClickedEvent(bookPanel));
-				}
-			});
-			bookPanel.getUpButton().addClickHandler(new ClickHandler() {
-				public void onClick(ClickEvent event) {
-					eventBus.fireEvent(new UpButtonClickedEvent(bookPanel));
-				}
-			});
-
+			bookPanel.getRemoveButton().addClickHandler(new RemoveButtonUIClickHandler(i));
+			bookPanel.getUpButton().addClickHandler(new UpButtonUIClickHandler(i));
 		}
 	}
 
-	public void onUpButtonClicked(UpButtonClickedEvent removeButtonClickedEvent) {
-		BookPanel bookPanel = removeButtonClickedEvent.getPanel();
-		int position = view.getStackPanel().getWidgetIndex(bookPanel);
-		model.moveTitleUp(position);
+	public void onRemoveButtonClicked(RemoveButtonClickedEvent removeButtonClickedEvent) {
+		model.removeTitle(removeButtonClickedEvent.getPosition());
 	}
 
+	public void onUpButtonClicked(UpButtonClickedEvent removeButtonClickedEvent) {
+		model.moveTitleUp(removeButtonClickedEvent.getPosition());
+	}
+
+	protected final class UpButtonUIClickHandler implements ClickHandler {
+		private final int position;
+
+		protected UpButtonUIClickHandler(int position) {
+			this.position = position;
+		}
+
+		public void onClick(ClickEvent event) {
+			eventBus.fireEvent(new UpButtonClickedEvent(position));
+		}
+	}
+
+	protected final class RemoveButtonUIClickHandler implements ClickHandler {
+		private final int position;
+
+		protected RemoveButtonUIClickHandler(int position) {
+			this.position = position;
+		}
+
+		public void onClick(ClickEvent event) {
+			eventBus.fireEvent(new RemoveButtonClickedEvent(position));
+		}
+	}
+
+	protected final class AddButtonUIClickHandler implements ClickHandler {
+		public void onClick(ClickEvent event) {
+			eventBus.fireEvent(new AddButtonClickedEvent());
+		}
+	}
+
+	
 }

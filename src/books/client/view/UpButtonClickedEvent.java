@@ -7,14 +7,14 @@ import com.google.gwt.event.shared.GwtEvent;
 public class UpButtonClickedEvent extends GwtEvent<UpButtonClickedEvent.Handler> {
 	public static final Type<Handler> TYPE = new Type<Handler>();
 
-	private BookPanel panel;
+	private int position;
 	
-	public UpButtonClickedEvent(BookPanel panel) {
-		this.panel = panel;
+	public UpButtonClickedEvent(int position) {
+		this.position = position;
 	}
 
-	public BookPanel getPanel() {
-		return panel;
+	public int getPosition() {
+		return position;
 	}
 	
 	@Override
@@ -28,7 +28,7 @@ public class UpButtonClickedEvent extends GwtEvent<UpButtonClickedEvent.Handler>
 	}
 
 	public interface Handler extends EventHandler {
-		void onUpButtonClicked(UpButtonClickedEvent removeButtonClickedEvent);
+		void onUpButtonClicked(UpButtonClickedEvent upButtonClickedEvent);
 	}
 
 	
