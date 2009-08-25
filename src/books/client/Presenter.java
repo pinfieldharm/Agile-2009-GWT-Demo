@@ -4,7 +4,7 @@ package books.client;
 import books.client.model.Model;
 import books.client.model.ModelChangeEvent;
 import books.client.view.AddButtonClickedEvent;
-import books.client.view.BookPanel;
+import books.client.view.BookPanelImpl;
 import books.client.view.BookStackPanel;
 import books.client.view.RemoveButtonClickedEvent;
 import books.client.view.UpButtonClickedEvent;
@@ -53,7 +53,7 @@ public class Presenter implements AddButtonClickedEvent.Handler, RemoveButtonCli
 		
 		for (int i = 0; i < model.getTitles().size(); i++) {
 			String title = model.getTitles().get(i);
-			BookPanel bookPanel = stackPanel.addBookPanel(title);
+			BookPanelImpl bookPanel = stackPanel.addBookPanel(title);
 			bookPanel.getRemoveButton().addClickHandler(new RemoveButtonUIClickHandler(i));
 			bookPanel.getUpButton().addClickHandler(new UpButtonUIClickHandler(i));
 		}

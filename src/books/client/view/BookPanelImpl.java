@@ -7,13 +7,13 @@ import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
 
-public final class BookPanel extends HorizontalPanel {
+public final class BookPanelImpl extends HorizontalPanel {
 	
 	private Image upButton;
 	private Image removeButton;
 	private Label label;
 
-	public BookPanel(String title) {
+	public BookPanelImpl(String title) {
 		this.setStylePrimaryName("bookPanel");
 		label = new Label(title);
 		label.setStylePrimaryName("bookTitle");
